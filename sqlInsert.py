@@ -25,3 +25,7 @@ for row in data:
 #disconnecting server
 cur.close()
 db.close()
+
+# Most of my files will have a table called age2. 
+# In my phpmyadmin, in my database students,
+#I acidentally labelled a table age2 and never changed it
