@@ -1,8 +1,7 @@
 import sys
-
 import Adafruit_DHT
-from time import sleep
 import pymysql
+from time import sleep
 
 # Parse command line parameters.
 sensor_args = { '11': Adafruit_DHT.DHT11,
@@ -16,6 +15,7 @@ else:
     #print('Example: sudo ./Adafruit_DHT.py 2302 4 - Read from an AM2302 connected to GPIO pin #4')
     #sys.exit(1)
 
+ 
 # Try to grab a sensor reading.  Use the read_retry method which will retry up
 # to 15 times to get a sensor reading (waiting 2 seconds between each retry).
     while True:
