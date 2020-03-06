@@ -1,17 +1,3 @@
-<html>
-<body>
-<div id="chart">
-  <div id="timeline-chart"></div>
-</div> var chart = new Chart(ctx, {
-    type: "line",
-    data: data,
-    options: {
-        title: {
-            display: true,
-            text: "Temperature Reader"
-        }
-    }
-});
 <?php
 $severname = "0.0.0.0"
 $username = "humid";
@@ -40,6 +26,3 @@ else {
 }
 $conn->close();
 ?>
-
-</body>
-</html>
