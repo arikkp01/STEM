@@ -43,33 +43,6 @@ else {
     echo "0 results";
 }
 
-//if ($result2->num_rows > 0) {
-    // Output highest temperature recorded and its date in human readable format
-    //while($row = $result2->fetch_assoc()) {
-        //echo nl2br("\n Highest temperature recorded: " . $row["temperature"]. "°C on ". date('F jS, Y h:i', strtotime($row["time"])));
-    }
-}
-
-//if ($result3->num_rows > 0) {
-    // Output lowest temperature recorded and its date in human readable format
-    //while($row = $result3->fetch_assoc()) {
-        //echo nl2br("\n Lowest temperature recorded: " . $row["temperature"]. "°C on ". date('F jS, Y h:i', strtotime($row["time"])));
-    }
-}
-
-//if ($result4->num_rows > 0) {
-    // Output highest humidity recorded and its date in human readable format
-    //while($row = $result4->fetch_assoc()) {
-        //echo nl2br("\n Highest humidity recorded: " . $row["humidity"]. "% on ". date('F jS, Y h:i', strtotime($row["time"])));
-    }
-}
-
-//if ($result5->num_rows > 0) {
-    // Output lowest humidity recorded and its date in human readable format
-    //while($row = $result5->fetch_assoc()) {
-        //echo nl2br("\n Lowest humidity recorded: " . $row["humidity"]. "% on ". date('F jS, Y h:i', strtotime($row["time"])));
-    }
-}
 
 // Close database connection
 $conn->close();
