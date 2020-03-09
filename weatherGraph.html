@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+
+<head>
+	<title> Weather App Project</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script src="../../../../dist/2.9.3/Chart.min.js"></script>
+	<script src="../../utils.js"></script>
+	
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+</head>
+<body>
+	<div style="width:75%;">
+		<canvas id="canvas"></canvas>
+	</div>
+
+<script>
+
+//using AJAX to access data from php myadmin
+$(document).ready(function(){
+	$.ajax({
+	url: "http://localhost/chartjs/sensor.php",
+	type: "GET",
+	success : function(data){
+		console.log(data);
+
+//creating variables to put into the graph
+var admin = [];
+var temperature_now = [];
+var humidity_now = [];
+	
+for (var i in data) {
+	admin.push("Admin" + data[i].admin);
+	temperature_now.push(data[i].temperature);
+	humidity_now.push(data[i].humidity);
+}
+
+$(document).read(function() {
+	showGraph()
+//Creating localtime in JavaScript
+var lineChartData = {
+	labels: axisX:{
+        title: "Time",
+        gridThickness: 2,
+        interval:2, 
+        intervalType: "hour",        
+        valueFormatString: "hh TT K", 
+        labelAngle: -20
+      },
+	//temperature_now red in graph
+   	datasets: [{
+	label: "Temperature",
+	borderColor: window.chartColors.red,
+	backgroundColor: window.chartColors.red,
+	fill: false,
+	data: [temperature_now]
+   	,
+	yAxisID: 'y-axis-1',
+	}, {
+	//humidity_now blue current temp.
+	label: 'Humidity',
+	borderColor: window.chartColors.blue,
+	backgroundColor: window.chartColors.blue,
+	fill: false,
+	data: [humidity_now],
+	yAxisID: 'y-axis-2'
+	}]
+		
+	};
+
+//used chart.js to create graphs 
+window.onload = function() {
+var ctx = document.getElementById('canvas').getContext('2d');
+	window.myLine = Chart.Line(ctx, {
+	data: lineChartData,options: {
+		responsive: true,
+		hoverMode: 'index',
+		stacked: false,
+		title: {
+		display: true,
+		text: 'Temperature Application'
+		},
+		scales: {
+			yAxes: [{
+				type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+				display: true,
+				position: 'left',
+				id: 'y-axis-1',
+				}, {
+				type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+				display: true,
+				position: 'right',
+				id: 'y-axis-2',
+				// grid line settings
+			gridLines: {
+				rawOnChartArea: false, // only want the grid lines for one axis to show up
+				},
+				}],
+			}
+		}
+	});
+};
+</script>
+</body>
+
+</html>
